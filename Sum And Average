@@ -1,0 +1,56 @@
+	static int getTheTotalSum()
+	{
+		int from = 0, to = 0, theTotal;
+		boolean isValidated = false;
+		
+		do 
+		{
+			from = getNumber("Enter Your Starting Number");
+			to = getNumber("Enter Your Ending Number");
+			isValidated = validateNumbers(from, to);
+			if (isValidated = false)
+			{
+				outputErrorMessage("You have not entered a for either the start number or the ending number");
+			}
+		} while(isValidated != true);
+		
+		theTotal = calculateTotalSum(to, from);
+		
+		return theTotal;
+	}
+	
+	
+	static int getNumber(String message)
+	{
+		int number;
+		try {
+		number = Integer.parseInt(JOptionPane.showInputDialog(message));
+		}
+		catch (NumberFormatException e)
+		{
+			number = 0;
+		}
+		return number;
+	}
+	
+	static void outputErrorMessage(String message)
+	{
+		JOptionPane.showMessageDialog(null, message);
+	}
+	
+	static boolean validateNumbers(int from, int to)
+	{
+		boolean isValidated = false;
+
+		if(from != 0)
+		{
+			isValidated = true;
+		}
+		else if (to != 0)
+		{
+			isValidated = true;
+		}
+	
+		return isValidated;
+		
+	}
