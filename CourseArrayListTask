@@ -1,0 +1,19 @@
+Controller:
+
+	public ArrayList<String> enterStudents(Scanner in)
+	{
+		ArrayList<String> students = new ArrayList<String>();
+		int counter = 0;
+		
+		
+		while (counter == 0 || !students.get(counter-1).equalsIgnoreCase("done"))
+		{
+			System.out.println("Enter Student Names - If Done Enter Done:");
+			students.add(in.nextLine());
+			counter++;
+		}			
+		students.remove(counter-1);
+		
+		return students;
+	}
+	
