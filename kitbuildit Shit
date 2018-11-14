@@ -1,0 +1,24 @@
+    public House getHouses(String houseType)
+    {
+        boolean typeValid = false;
+            while (!typeValid)
+            {
+                if (!houseType.equalsIgnoreCase("Timber") && houseType.equalsIgnoreCase("Masonry"))
+                {
+                    JOptionPane.showMessageDialog(null, "Invalid Type:");
+                    JOptionPane.showInputDialog("Enter The Type of House - Timber or Masonry:");
+                }
+                else
+                {
+                    typeValid = true;
+                }
+            }
+            if (houseType.equalsIgnoreCase("Masonry"))
+            {
+                return houses.get(0);
+            }
+            else
+            {
+                return houses.get(1);
+            }
+    }
