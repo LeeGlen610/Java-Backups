@@ -1,0 +1,26 @@
+try {
+       int findHouse = Integer.parseInt(JOptionPane.showInputDialog("What Is Being Changed About The House?\n1 - Material Cost\n2 - Number of Rooms\n3 - Square Footage\n4 - Maximum Floors\n5 - Type of Timber"));
+       switch (findHouse) {
+                case 1:
+                    model.editHouse("Material Cost");
+                    break;
+                case 2:
+                    model.editHouse("Number of Rooms");
+                    break;
+                case 3:
+                    model.editHouse("Square Footage");
+                    break;
+                case 4:
+                    model.editHouse("Maximum Floors");
+                    break;
+                case 5:
+                    model.editHouse("Timber Type");
+                    break;
+            }
+} catch (NumberFormatException e) {
+       if (e.getMessage().equals("null")) {
+                System.exit(0);
+            }
+            JOptionPane.showMessageDialog(null, "Please enter a number");
+            editHouseDetails();
+}
