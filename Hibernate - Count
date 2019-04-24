@@ -1,0 +1,30 @@
+    case "Employee Sold":
+                session = sessionStart();
+                session.beginTransaction();
+                String HQL = "SELECT employee.id, count(*) FROM TransactionLog GROUP BY employee.id";
+                Query q = session.createQuery(HQL);
+                List<Object[]> counts = q.getResultList();
+                HQL = "FROM Employee";
+                q = session.createQuery(HQL);
+                List<Employee> employees = q.getResultList();
+                Map<Object, Object> YES = new HashMap<>();
+                for (Object[] countings :
+                        counts) {
+                    YES.put(countings[0], countings[1]);
+                }
+                System.out.println(YES.size());
+                long mostSold = 0;
+                int employeeMostSold = 0;
+                for (int i = 0; i < YES.size(); i++) {
+                    if (mostSold < (long) YES.get(i + 1)) {
+                        mostSold = (long) YES.get(i + 1);
+                        employeeMostSold = i + 1;
+                    }
+                }
+                for (Employee employee :
+                        employees) {
+                    if (employee.getId() == employeeMostSold){
+                        System.out.println("The Employee Who've Sold The Most Is: " + employee.getFirst_name() + " " + employee.getLast_name() + " With " + mostSold + " Products Sold!");
+                    }
+                }
+                break;
